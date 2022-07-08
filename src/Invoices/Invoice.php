@@ -927,6 +927,14 @@ final class Invoice extends DateAwareEntity
     }
 
     /**
+     * @return null|Type
+     */
+    public function type()
+    {
+        return $this->type ? Type::fromString($this->type) : null;
+    }
+
+    /**
      * @return int
      */
     public function signed()
