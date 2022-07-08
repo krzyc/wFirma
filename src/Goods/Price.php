@@ -136,9 +136,9 @@ final class Price
     }
 
     /**
-     * @return VatCodeId
+     * @return VatCodeId|null
      */
-    public function vatCodePurchaseId(): VatCodeId
+    public function vatCodePurchaseId(): ?VatCodeId
     {
         return $this->vatCodePurchaseId;
     }
