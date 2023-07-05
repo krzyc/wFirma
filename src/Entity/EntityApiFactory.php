@@ -2,25 +2,25 @@
 
 namespace Webit\WFirmaSDK\Entity;
 
-use Webit\WFirmaSDK\Auth\BasicAuth;
-use Webit\WFirmaSDK\Entity\Infrastructure\BasicAuthBasedRequestExecutorFactory;
+use Webit\WFirmaSDK\Auth\Auth;
+use Webit\WFirmaSDK\Entity\Infrastructure\RequestExecutorFactory;
 use Webit\WFirmaSDK\Entity\Infrastructure\Buzz\BuzzRequestExecutorFactory;
 
 class EntityApiFactory
 {
-    /** @var BasicAuthBasedRequestExecutorFactory */
+    /** @var RequestExecutorFactory */
     private $executorFactory;
 
-    public function __construct(BasicAuthBasedRequestExecutorFactory $executorFactory = null)
+    public function __construct(RequestExecutorFactory $executorFactory = null)
     {
         $this->executorFactory = $executorFactory ?: new BuzzRequestExecutorFactory();
     }
 
     /**
-     * @param BasicAuth $auth
+     * @param Auth $auth
      * @return DefaultEntityApi
      */
-    public function create(BasicAuth $auth)
+    public function create(Auth $auth)
     {
         return new DefaultEntityApi(
             $this->executorFactory->create($auth)
